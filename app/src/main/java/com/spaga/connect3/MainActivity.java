@@ -49,6 +49,20 @@ public class MainActivity extends AppCompatActivity {
 
                     LinearLayout layout = findViewById(R.id.playAgainLayout);
                     layout.setVisibility(View.VISIBLE);
+                } else {
+                    // It is a draw
+                    boolean gameIsOver = true;
+
+                    for (int counterState : gameState)
+                        if (counterState == 2) gameIsOver = false;
+
+                    if (gameIsOver) {
+                        TextView winnerMsg = findViewById(R.id.winnerMsg);
+                        winnerMsg.setText("It is a draw.");
+
+                        LinearLayout layout = findViewById(R.id.playAgainLayout);
+                        layout.setVisibility(View.VISIBLE);
+                    }
                 }
 
             }
