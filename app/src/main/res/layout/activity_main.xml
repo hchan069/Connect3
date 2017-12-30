@@ -7,6 +7,7 @@
     tools:context="com.spaga.connect3.MainActivity">
 
     <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="373dp"
         android:layout_height="360dp"
         android:layout_marginBottom="8dp"
@@ -121,4 +122,39 @@
             android:onClick="dropIn"
             android:tag="8" />
     </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/playAgainLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#fffc36"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+        <TextView
+            android:id="@+id/winnerMesg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="YOU WON!"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:onClick="playAgain"
+            android:text="Play Again" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
