@@ -16,12 +16,13 @@ public class MainActivity extends AppCompatActivity {
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
     int[][] winningPositions = {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7},
             {2,5,8}, {0,4,8}, {2,4,6}};
+    boolean gameIsActive = true;
 
     public void dropIn(View view) {
         ImageView counter = (ImageView) view;
         int tappedCounter = Integer.parseInt(counter.getTag().toString());
 
-        if (gameState[tappedCounter] == 2) { //if it is two, area is unplayed
+        if (gameState[tappedCounter] == 2 && gameIsActive) { //if it is two, area is unplayed
             gameState[tappedCounter] = activePlayer;
             counter.setTranslationY(-1500f);
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         gameState[winningPosition[1]] == gameState[winningPosition[2]] &&
                         gameState[winningPosition[0]] != 2) {
                     // Someone won
+                    gameIsActive = false;
                     String winner = "Red";
                     if (gameState[winningPosition[0]] == 0)
                         winner = "Yellow";
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playAgain(View view) {
+        gameIsActive = true;
         LinearLayout layout = findViewById(R.id.playAgainLayout);
         layout.setVisibility(View.INVISIBLE);
 
