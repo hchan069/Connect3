@@ -10,24 +10,26 @@ public class MainActivity extends AppCompatActivity {
     // 0 = yellow, 1 = red
     int activePlayer = 0;
     // 2 = unplayed
-    int[] gameStae = {2, 2, 2, 2, 2, 2, 2, 2, 2};
+    int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
     public void dropIn(View view) {
         ImageView counter = (ImageView) view;
-        System.out.println(counter.getTag().toString());
+        //System.out.println(counter.getTag().toString());
+        int tappedCounter = Integer.parseInt(counter.getTag().toString());
 
-        counter.setTranslationY(-1500f);
+        if (gameState[tappedCounter] == 2) { //if it is two, area is unplayed
+            gameState[tappedCounter] = activePlayer;
+            counter.setTranslationY(-1500f);
 
-        if (activePlayer == 0) {
-            counter.setImageResource(R.drawable.yellow_token);
-            activePlayer = 1;
+            if (activePlayer == 0) {
+                counter.setImageResource(R.drawable.yellow_token);
+                activePlayer = 1;
+            } else {
+                counter.setImageResource(R.drawable.red_token);
+                activePlayer = 0;
+            }
+            counter.animate().translationYBy(1500f).setDuration(300);
         }
-        else {
-            counter.setImageResource(R.drawable.red_token);
-            activePlayer = 0;
-        }
-
-        counter.animate().translationYBy(1500f).setDuration(300);
     }
 
     @Override
